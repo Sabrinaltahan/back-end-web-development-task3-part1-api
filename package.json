@@ -1,0 +1,19 @@
+{
+  "name": "back-end-web-development-task3-part1-api",
+  "version": "1.0.0",
+  "description": "Back-end web development repository for the third task - part 1 (Express & Node.js)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "sabrin",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.6.0",
+    "mongoose": "^6.0.11"
+  }
+}
