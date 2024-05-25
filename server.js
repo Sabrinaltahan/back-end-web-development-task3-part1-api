@@ -24,12 +24,12 @@ db.once('open', () => {
 
     // MongoDB schema for work experience with validation
     const workExperienceSchema = new mongoose.Schema({
-        companyname: { type: String, required: true },
-        jobtitle: { type: String, required: true },
-        location: { type: String, required: true },
+        companyname: { type: String, required: true, minlength: 4 },
+        jobtitle: { type: String, required: true, minlength: 4 },
+        location: { type: String, required: true, minlength: 4 },
         startdate: { type: Date, required: true },
         enddate: { type: Date, required: true },
-        description: { type: String, required: true }
+        description: { type: String, required: true, minlength: 10 }
     });
 
     const WorkExperience = mongoose.model('experiences', workExperienceSchema);
@@ -66,7 +66,7 @@ db.once('open', () => {
     // Route for updating a work experience
     app.put('/workexperience/:id', async (req, res) => {
         try {
-            const updatedWorkExperience = await WorkExperience.findByIdAndUpdate(req.params.id, req.body, { new: true });
+            const updatedWorkExperience = await WorkExperience.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
             res.json(updatedWorkExperience);
         } catch (error) {
             res.status(400).json({ message: error.message });
